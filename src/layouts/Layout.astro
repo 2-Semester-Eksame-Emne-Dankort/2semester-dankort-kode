@@ -1,5 +1,7 @@
 ---
 import "../styles/main.css";
+import Header from '../components/header.astro';
+import Footer from '../components/footer.astro';
 
 ---
 
@@ -14,8 +16,8 @@ import "../styles/main.css";
 		<title>Dankort</title>
 	</head>
 	<body>
-		<header></header>
+		<Header />
 		<slot />
-		<footer></footer>
+		<Footer />
 	</body>
 </html>
