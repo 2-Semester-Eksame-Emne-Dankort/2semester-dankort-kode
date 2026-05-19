@@ -1,0 +1,32 @@
+---
+// Vi tager imod 'text' og 'link' som indstillinger (props)
+const { text, link } = Astro.props;
+---
+
+<a href={link} class="btn-outline">
+  {text}
+</a>
+
+<style>
+  .btn-outline {
+    display: inline-block;
+    font-family: 'Railway', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    background-color: #E21E27;
+    padding: 14px 45px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .btn-outline:hover {
+    background-color: #BB1018;
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+</style>
