@@ -31,39 +31,73 @@
   .site-header {
     width: 100%;
     background: var(--the-grey);
-    padding: 1rem 2rem;
+    padding: 1rem 1.2rem;
     position: sticky;
     top: 0;
+    z-index: 1000;
   }
 
   .header-inner {
-    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 1.2rem;
   }
 
   .brand svg {
-    width: 90px;
+    width: 70px;
     height: auto;
     display: block;
+    margin: 0 auto;
   }
 
   .main-nav {
     display: flex;
-    gap: 4rem;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    align-items: center;
   }
 
   .main-nav a {
     text-decoration: none;
     color: var(--the-black);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 500;
+    padding: 0.5rem 0;
+    width: 100%;
+    text-align: center;
   }
 
-   .main-nav a:hover {
-    color: #ffffff;
-   }
+  .main-nav a:hover {
+    color: #fff;
+  }
+
+  @media (min-width: 900px) {
+    .header-inner {
+      max-width: 1200px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0;
+    }
+    .brand svg {
+      width: 90px;
+      margin: 0;
+    }
+    .main-nav {
+      flex-direction: row;
+      gap: 4rem;
+      width: auto;
+    }
+    .main-nav a {
+      width: auto;
+      text-align: left;
+      padding: 0;
+      border-radius: 0;
+      background: none;
+    }
+  }
 </style>
