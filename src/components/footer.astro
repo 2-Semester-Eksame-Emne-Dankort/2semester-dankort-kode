@@ -1,0 +1,186 @@
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Venstre side -->
+    <div class="footer-links">
+
+      <!-- Sprog -->
+      <div class="language-switch">
+        <span>Dansk</span>
+        <span class="arrow">⌄</span>
+      </div>
+
+      <!-- Columns -->
+      <div class="footer-columns">
+
+        <div class="footer-col">
+          <h3>Dankort</h3>
+
+          <a href="#">Om Dankort</a>
+          <a href="#">Presse</a>
+          <a href="#">Download Logoer</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Support</h3>
+
+          <a href="#">Kontakt salg</a>
+          <a href="#">Kontakt kundeservice</a>
+          <a href="#">Support erhverv</a>
+          <a href="#">Support privat</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Politikker</h3>
+
+          <a href="#">Privatlivspolitikker</a>
+          <a href="#">Cookies</a>
+          <a href="#">AEE regulativ</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Højre side -->
+    <div class="footer-card">
+      <img 
+        src="/assets/dankort-logo-white.png"
+        alt="Dankort logo"
+      />
+
+      <h2>Mere end bare betaling</h2>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+
+.footer {
+  background: #f5f5f5;
+  padding: 70px 60px;
+  border-top: 1px solid #ddd;
+  font-family: sans-serif;
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+/* LEFT SIDE */
+
+.footer-links {
+  flex: 1;
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  background: white;
+  border-radius: 999px;
+
+  padding: 10px 16px;
+  margin-bottom: 60px;
+
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.language-switch img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.arrow {
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+/* Columns */
+
+.footer-columns {
+  display: flex;
+  gap: 80px;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-col h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.footer-col a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+.footer-col a:hover {
+  opacity: 0.6;
+}
+
+/* CARD */
+
+.footer-card {
+  width: 260px;
+  height: 280px;
+
+  background: #16283d;
+  border-radius: 32px;
+
+  padding: 28px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer-card img {
+  width: 70px;
+}
+
+.footer-card h2 {
+  color: white;
+  font-size: 2rem;
+  line-height: 1.1;
+  max-width: 180px;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-columns {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .footer-card {
+    width: 100%;
+    max-width: 320px;
+  }
+
+}
+
+</style>
