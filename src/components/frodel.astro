@@ -1,4 +1,111 @@
---- 
+---
 
 ---
 
+<section class="fordel">
+  <h2>Lær de unikke fordele ved Dankort</h2>
+
+  <div class="fordel-grid">
+    <article class="fordel-card">
+      <img src="Img/tree-icon.webp" alt="" />
+      <div>
+        <h3>1 øre til naturen hver gang du betaler</h3>
+        <p>Igennem vores samarbejde med Den Danske Naturfond donerer vi en øre til dansk natur, hver du betaler med Dankort.</p>
+      </div>
+    </article>
+
+    <article class="fordel-card">
+      <img src="Img/coin-icon.webp" alt="" />
+      <div>
+        <h3>Dankort er dansk ejet</h3>
+        <p>Det sikrer, at flere af pengene fra betalingerne bliver og bruges i Danmark, hvor de kan støtte lokale butikker og virksomheder.</p>
+      </div>
+    </article>
+
+    <article class="fordel-card">
+      <img src="Img/butik-icon.webp" alt="" />
+      <div>
+        <h3>Dankort sparer butikkerne mange penge</h3>
+        <p>Dankorts gebyrer er halvt så høje kontra udenlandske kort, og det er med til at holde priserne nede for os allesammen.</p>
+      </div>
+    </article>
+
+    <article class="fordel-card">
+      <img src="Img/security-icon.webp" alt="" />
+      <div>
+        <h3>Med Dankort er du sikret</h3>
+        <p>Med Dankorts offline funktion er du sikret at kunne betale i en potentiel nødsituation eller nedbrud.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .fordel {
+    padding: 4rem 2rem;
+    background: var(--the-background);
+  }
+
+  .fordel h2 {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 4rem;
+    font-weight: 800;
+  }
+
+  .fordel-grid {
+    display: grid;
+    gap: 4rem;
+  }
+
+  .fordel-card {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .fordel-card img {
+    width: 80px;
+    height: auto;
+  }
+
+  .fordel-card h3 {
+    font-size: 1.2rem;
+    line-height: 1.35;
+    margin: 0 0 1rem;
+    font-weight: 900;
+  }
+
+  .fordel-card p {
+    font-size: 0.9rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  @media (min-width: 900px) {
+    .fordel {
+      padding: 5rem 6rem 8rem;
+    }
+
+    .fordel h2 {
+      font-size: 2.6rem;
+      margin-bottom: 5rem;
+    }
+
+    .fordel-grid {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 4rem;
+      row-gap: 7rem;
+    }
+
+    .fordel-card {
+      grid-template-columns: 120px 1fr;
+      gap: 2.5rem;
+    }
+
+    .fordel-card img {
+      width: 100px;
+    }
+  }
+</style>
