@@ -1,5 +1,6 @@
 ---
 
+//@ts-nocheck
 ---
 
 <header class="site-header">
@@ -18,7 +19,14 @@
 
     </a>
 
-    <nav class="main-nav">
+    <button class="burger-btn" id="burger-btn" aria-label="Åbn menu">
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+      <span class="burger-line"></span>
+    </button>
+
+    <nav class="main-nav" id="burger-nav">
+      <button class="nav-close" id="burger-close" aria-label="Luk menu">✕</button>
       <a href="/erhverv">Erhverv</a>
       <a href="/privat">Privat</a>
       <a href="/oremerket">Dankort Øremærket</a>
@@ -29,75 +37,154 @@
 
 <style>
   .site-header {
-    width: 100%;
     background: var(--the-grey);
     padding: 1rem 1.2rem;
     position: sticky;
     top: 0;
     z-index: 1000;
+    height: 96px;
+    display: flex;
   }
 
   .header-inner {
+    position: relative;
     width: 100%;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    gap: 1.2rem;
+    justify-content: space-between;
   }
 
   .brand svg {
     width: 70px;
-    height: auto;
     display: block;
-    margin: 0 auto;
+    margin: 0;
+  }
+
+  .burger-btn {
+    background: none;
+    border: 0;
+    padding: 0.7rem 0.8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+  }
+
+  .burger-line {
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: var(--the-black);
+    border-radius: 2px;
   }
 
   .main-nav {
+    display: none;
+  }
+
+  .main-nav.active {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    width: 100%;
     align-items: center;
+    gap: 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    margin-top: 0;
+    background: #fff;
+    padding: 1.5rem;
+    z-index: 1200;
+  }
+
+  .nav-close {
+    align-self: flex-end;
+    background: none;
+    border: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--the-black);
   }
 
   .main-nav a {
     text-decoration: none;
     color: var(--the-black);
-    font-size: 1.1rem;
-    font-weight: 500;
-    padding: 0.5rem 0;
+    font-size: 1.05rem;
+    font-weight: 400;
     width: 100%;
     text-align: center;
   }
 
-  .main-nav a:hover {
-    color: #fff;
-  }
+    .main-nav:active a:hover {
+      color: white;
+    }
 
   @media (min-width: 900px) {
     .header-inner {
       max-width: 1200px;
-      flex-direction: row;
-      align-items: center;
       justify-content: space-between;
       gap: 0;
     }
     .brand svg {
       width: 90px;
-      margin: 0;
+    }
+    .burger-btn {
+      display: none;
     }
     .main-nav {
+      display: flex;
       flex-direction: row;
-      gap: 4rem;
+      align-items: center;
+      gap: 3rem;
       width: auto;
+      background: transparent;
+      padding: 0;
     }
     .main-nav a {
       width: auto;
-      text-align: left;
+    }
+    .main-nav a:hover {
+      color: white;
+    }
+    .main-nav.active {
+      position: static;
+      top: auto;
+      left: auto;
+      width: auto;
+      margin-top: 0;
+      background: transparent;
       padding: 0;
-      border-radius: 0;
-      background: none;
+      gap: 3rem;
+    }
+    .nav-close {
+      display: none;
     }
   }
 </style>
+
+<script>
+  const burger = document.getElementById("burger-btn");
+  const nav = document.getElementById("burger-nav");
+  const closeBtn = document.getElementById("burger-close");
+
+  burger?.addEventListener("click", () => {
+    nav?.classList.toggle("active");
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    nav?.classList.remove("active");
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!nav?.classList.contains("active")) return;
+    if (nav.contains(event.target) || burger?.contains(event.target)) return;
+    nav.classList.remove("active");
+  });
+
+
+</script>
