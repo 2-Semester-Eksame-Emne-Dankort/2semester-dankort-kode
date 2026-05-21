@@ -182,6 +182,7 @@
 
   document.addEventListener("click", (event) => {
     if (!nav?.classList.contains("active")) return;
+    //If you click inside the menu or on the burger button, it also does nothing.
     if (nav.contains(event.target) || burger?.contains(event.target)) return;
     nav.classList.remove("active");
   });
