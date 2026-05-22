@@ -1,7 +1,49 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HeroOremerket from '../components/hero-oremerket.astro';
 ---
 
 <Layout>
+    <HeroOremerket />
+    <section class="om-oremerket-side">
+    <h2 class="oremerket-heading">Om Øremærket</h2>
+    <p class="oremerket-text">
+        Hver gang der betales med Dankort, går 1-3 øre automatisk til Den Danske Naturfond. Det lyder måske ikke af meget, men når millioner af danskere betaler med Dankort hver dag, vokser det hurtigt til noget der gør en reel forskel for den danske natur. Det samarbejde kalder vi Dankort Øremærket — fordi pengene er øremærket til ét formål: at beskytte, genoprette og udvide naturen i hele Danmark.
+    </p>
+    </section>
+
 
 </Layout>
+
+<style>
+    .om-oremerket-side {
+        padding: 4rem 2rem;
+        background: var(--the-background);
+    }
+
+    .oremerket-heading {
+        font-size: 1.8rem;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        font-weight: 900;
+    }
+
+    .oremerket-text {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    @media (min-width: 900px) {
+        .om-oremerket-side {
+            padding: 4rem 6rem;
+        }
+        .oremerket-heading {
+            font-size: 2.2rem;
+        }
+        .oremerket-text {
+            font-size: 1.2rem;
+        }
+    }
+
+</style>
