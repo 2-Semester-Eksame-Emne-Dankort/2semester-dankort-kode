@@ -1,7 +1,9 @@
+
 <section class="trin">
 
   <span class="small-text">
     SÅDAN VIRKER DET
+
   </span>
 
   <h2>Trin for trin</h2>
@@ -56,26 +58,17 @@
 
   </div>
   
-<button class="news-btn" popovertarget="popup-nyhed1">
-  Read more
-</button>
-
-<div id="popup-nyhed1" popover class="popup">
-  <h2>Storm Warning</h2>
-  <p>Avoid coastal areas tonight.</p>
-
-  <button popovertarget="popup-nyhed1" popovertargetaction="hide">
-    Close
-  </button>
-</div>
 </section>
 
-<style>.trin {
-  background: #e9e9e9;
+<style>
 
+.trin {
+   background: #e9e9e9;
   padding: 3rem;
-
   border-radius: 32px;
+  margin: 2rem;
+  filter: drop-shadow(0px 10px 6px rgba(0,0,0,0.4));
+
 }
 
 .small-text {
@@ -91,13 +84,16 @@
 .trin-wrapper {
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .trin-card {
-  text-align: center;
-  max-width: 220px;
+  
+    text-align: center;
+  max-width: 180px;
+    flex: 1 1 180px;
 }
 
 .number {
@@ -130,4 +126,13 @@
 .arrow {
   font-size: 3rem;
   margin-top: 1rem;
-}</style>
+
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .arrow {
+    display: none;
+  }
+}
+</style>
