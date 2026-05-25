@@ -37,7 +37,9 @@
 
 <style>
   .site-header {
-    background: var(--the-grey);
+   
+    background: color-mix(in srgb, var(--the-grey) 95%, transparent);
+    backdrop-filter: blur(2.1px);
     padding: 1rem 1.2rem;
     position: sticky;
     top: 0;
@@ -187,5 +189,6 @@
     nav.classList.remove("active");
   });
 
+  
 
 </script>
