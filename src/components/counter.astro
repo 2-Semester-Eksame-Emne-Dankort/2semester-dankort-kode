@@ -1,15 +1,15 @@
 <div class="counter-card">
   <div class="year-tabs">
-    <div class="year-tab">2024</div>
-    <div class="year-tab">2025</div>
-    <div class="year-tab active">2026</div>
+    <div class="year-tab" data-year="2024">2024</div>
+    <div class="year-tab" data-year="2025">2025</div>
+    <div class="year-tab active" data-year="2026">2026</div>
   </div>
   <div class="top">
     <div>
-      <h2>2026</h2>
+      <h2 id="current-year">2026</h2>
       <p>Estimeret donation indtil videre</p>
 
-      <h1>3.048.303,56 KR</h1>
+      <h1 id="donation-amount">3.048.303,56 KR</h1>
     </div>
 
     <div class="top-right">
@@ -18,30 +18,29 @@
   </div>
 
   <div class="progress-bar">
-    <div class="progress"></div>
+    <div class="progress" id="progress-line" style="width: 40%;"></div>
   </div>
 
   <div class="bottom-cards">
     <div class="info-card">
       <span>Det svar til</span>
-      <h3>254.683 m²</h3>
+      <h3 id="area-val">254.683 m²</h3>
       <p>Natur område beskyttede</p>
     </div>
 
     <div class="info-card">
       <span>Eller ca.</span>
-      <h3>380 Tons CO₂</h3>
+      <h3 id="co2-val">380 Tons CO₂</h3>
       <p>Optaget årligt</p>
     </div>
 
     <div class="info-card">
       <span>Eller ca.</span>
-      !-- 
+      <h3 id="species-val">!--</h3>
       <p>Dyrearter hjulpet</p>
     </div>
   </div>
 </div>
-
 
 
 
