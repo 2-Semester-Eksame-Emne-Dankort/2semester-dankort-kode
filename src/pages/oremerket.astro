@@ -2,7 +2,12 @@
 import Layout from '../layouts/Layout.astro';
 import HeroOremerket from '../components/hero-oremerket.astro';
 import Kort from '../components/kort.astro';
+import Counter from '../components/counter.astro';
+const endpoint = "https://ixghczwghjowmllzbjuk.supabase.co/rest/v1/oermaerketsiden-taeller?select=*"
+const key = "sb_publishable_LrHsJDkISlXic1PhUDY__Q_g7qLlqpL"
+
 ---
+
 
 <Layout>
     <HeroOremerket />
@@ -15,6 +20,7 @@ import Kort from '../components/kort.astro';
 
 <Kort />
 
+<Counter />
 </Layout>
 
 <style>
