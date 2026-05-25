@@ -1,15 +1,35 @@
+---
+const response = await fetch(
+  "https://ixghczwghjowmllzbjuk.supabase.co/rest/v1/oermaerketsiden-taeller?select=*&order=year.asc",
+  {
+    headers: {
+      apikey: "sb_publishable_LrHsJDkISlXic1PhUDY__Q_g7qLlqpL",
+    },
+  }
+);
+
+const years = await response.json(); //Fetch the data from the API and store it in a variable called years
+const activeYear = years[2];
+//@ts-nocheck
+---
+
 <div class="counter-card">
-  <div class="year-tabs">
-    <div class="year-tab" data-year="2024">2024</div>
-    <div class="year-tab" data-year="2025">2025</div>
-    <div class="year-tab active" data-year="2026">2026</div>
+  <div class="year-tabs"> 
+    {years.map((yearData: any) => ( //Loop through the years data and create a button for each year, with the year value as the text and a data attribute for the year.
+      <button
+        class={`year-tab ${yearData.year === activeYear.year ? "active" : ""}`} //If this button’s year is the same as the active year, add the class active. Otherwise add nothing.
+        data-year={yearData.year} //Add a data attribute to the button with the year value, so we can access it in the click event listener.
+      >
+        {yearData.year}
+      </button>
+    ))}
   </div>
+
   <div class="top">
     <div>
-      <h2 id="current-year">2026</h2>
+      <h2 id="current-year">{activeYear.year}</h2>
       <p>Estimeret donation indtil videre</p>
-
-      <h1 id="donation-amount">3.048.303,56 KR</h1>
+      <h1 id="donation-amount">{activeYear.donation_amount} KR</h1>
     </div>
 
     <div class="top-right">
@@ -18,41 +38,80 @@
   </div>
 
   <div class="progress-bar">
-    <div class="progress" id="progress-line" style="width: 40%;"></div>
+    <div
+      class="progress"
+      id="progress-line"
+      style={`width:${activeYear.progress_percent}%`}
+    ></div>
   </div>
 
   <div class="bottom-cards">
     <div class="info-card">
-      <span>Det svar til</span>
-      <h3 id="area-val">254.683 m²</h3>
-      <p>Natur område beskyttede</p>
+      <span>Det svarer til</span>
+      <h3 id="area-val">{activeYear.area_number} m²</h3>
+      <p>Naturområde beskyttet</p>
     </div>
 
     <div class="info-card">
       <span>Eller ca.</span>
-      <h3 id="co2-val">380 Tons CO₂</h3>
+      <h3 id="co2-val">{activeYear.co2_amount} Tons CO₂</h3>
       <p>Optaget årligt</p>
     </div>
 
     <div class="info-card">
       <span>Eller ca.</span>
-      <h3 id="species-val">!--</h3>
+      <h3 id="species-val">{activeYear.animal_species}</h3>
       <p>Dyrearter hjulpet</p>
     </div>
   </div>
 </div>
 
+<script define:vars={{ years }}> //Make the years data available in the script, so we can use it to update the content when a year tab is clicked.
+  const tabs = document.querySelectorAll(".year-tab"); //Select all the year tab buttons, so we can add click event listeners to them.
 
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const selectedYear = years.find(
+        (item) => item.year == tab.dataset.year
+      ); //Find the year data that matches the year of the clicked button, using the data-year attribute.
 
+      tabs.forEach((tabButton) => tabButton.classList.remove("active"));
+      tab.classList.add("active"); //Remove the active class from all buttons, then add it to the clicked button.
 
+      document.querySelector("#current-year").textContent =
+        selectedYear.year; //Update the content of the elements with the data from the selected year.
 
+      document.querySelector("#donation-amount").textContent =
+        selectedYear.donation_amount + " KR"; 
 
+      document.querySelector("#area-val").textContent =
+        selectedYear.area_number + " m²";
 
+      document.querySelector("#co2-val").textContent =
+        selectedYear.co2_amount + " Tons CO₂";
 
+      document.querySelector("#species-val").textContent =
+        selectedYear.animal_species; 
 
-
+      document.querySelector("#progress-line").style.width =
+        selectedYear.progress_percent + "%"; //Update the width of the progress line based on the selected year's progress percent.
+    });
+  });
+</script>
 
 <style>
+  .counter-card {
+    position: relative;
+    background: #17283b;
+    color: white;
+    padding: 24px;
+    border-radius: 24px;
+    max-width: 800px;
+    margin: 60px auto 24px;
+    font-family: var(--font);
+  }
+
+
   .year-tabs {
     display: flex;
     gap: 6px;
@@ -60,9 +119,10 @@
     top: -32px;
     left: 0;
     padding-left: 18px;
-    z-index: -1;
   }
+
   .year-tab {
+    border: none;
     background: #45c7ff;
     color: #fff;
     font-weight: 700;
@@ -73,38 +133,28 @@
     margin-bottom: -8px;
     box-shadow: 0 2px 6px rgba(0,0,0,0.04);
     cursor: pointer;
-  
+    font-family: inherit;
   }
+
   .year-tab:not(.active) {
     background: #b6e6fa;
     color: #222;
   }
+
   .year-tab.active {
     background: #17283b;
     color: #fff;
     z-index: 3;
   }
-  .counter-card {
-    position: relative;
-  }
-  .counter-card {
-    background: #17283b;
-    color: white;
-    padding: 24px;
-    border-radius: 24px;
-    max-width: 800px;
-    margin: 24px auto;
-    font-family: Arial, sans-serif;
-  }
 
   .top {
     display: flex;
-    justify-content: space-between;
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 32px;
     margin: 14px 0;
     font-weight: 400;
   }
@@ -131,14 +181,16 @@
   }
 
   .progress {
-    width: 38%;
     height: 100%;
     background: #45c7ff;
+    border-radius: 999px;
+    transition: width 0.35s ease;
   }
 
   .bottom-cards {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .info-card {
@@ -159,14 +211,29 @@
     color: #444;
   }
 
-  @media (max-width: 900px) {
-    .top,
+  @media (min-width: 900px) {
+    .counter-card {
+      max-width: 1100px;
+      padding: 36px;
+    }
+
+    .top {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .top-right {
+      font-size: 16px;
+    }
+
     .bottom-cards {
-      flex-direction: column;
+      flex-direction: row;
+      gap: 20px;
     }
 
     h1 {
-      font-size: 42px;
+      font-size: 60px;
     }
   }
 </style>
