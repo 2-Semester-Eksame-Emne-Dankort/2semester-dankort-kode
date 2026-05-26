@@ -3,7 +3,6 @@
   <button class="tilbage-knap" popovertarget="popup-Bornholm" popovertargetaction="hide">&lt; Tilbage</button>
 
 
-
 <div class="popup-tekst">
   <h1>RANDKLØVE SKÅR</h1>
   <h2>BORNHOLM</h2>
@@ -20,8 +19,6 @@
 
 <div id="popup-Storebælt_klint" popover>
     <button class="tilbage-knap" popovertarget="popup-Storebælt_klint" popovertargetaction="hide">&lt; Tilbage</button>
-
-
 
 
 <div class="popup-tekst">
@@ -42,8 +39,6 @@
     <button class="tilbage-knap" popovertarget="popup-Hesbjergskov" popovertargetaction="hide">&lt; Tilbage</button>
 
 
-
-
   <div class="popup-tekst">
   <h1>HESBJERGSKOV</h1>
   <h2>FYN</h2>
@@ -62,8 +57,6 @@
     <button class="tilbage-knap" popovertarget="popup-Treldenes" popovertargetaction="hide">&lt; Tilbage</button>
 
 
-
-
 <div class="popup-tekst">
   <h1>TRELDE NÆS</h1>
   <h2>FREDERICIA</h2>
@@ -79,9 +72,6 @@
 
 <div id="popup-Veno" popover>
     <button class="tilbage-knap" popovertarget="popup-Veno" popovertargetaction="hide">&lt; Tilbage</button>
-
-  
-
 
 
 <div class="popup-tekst">
@@ -102,9 +92,6 @@
     <button class="tilbage-knap" popovertarget="popup-Grønnestrand" popovertargetaction="hide">&lt; Tilbage</button>
 
 
-
-
-
 <div class="popup-tekst">
   <h1>GRØNNESTRAND</h1>
   <h2>JAMMERBUGTEN</h2>
@@ -121,8 +108,6 @@
 
 <div id="popup-Halsmose" popover>
     <button class="tilbage-knap" popovertarget="popup-Halsmose" popovertargetaction="hide">&lt; Tilbage</button>
-
-
 
 
 <div class="popup-tekst">
@@ -155,61 +140,90 @@
   <defs> 
     <style>
 
+      /* START STYLE DESKTOP */
+
+
+      /* Tilbage-button i popupen */
       .tilbage-knap {
-        background: none;
-        font-size: 20px;
-        font-weight: 800;
-        border: none;
-        cursor: pointer;
-        margin-bottom: 3.5rem;
+        background: none; /* Fjerner den grimme grå baggrund til knappen */
+        font-size: 20px; 
+        font-weight: 800; 
+        border: none; /* Fjerner rammen rundt om knappen */
+        cursor: pointer; /* Musen bliver til en hånd, når man holder det over knappen */
+        margin-bottom: 3.5rem; /* Laver Luft under knappen */
         font-family: 'Raleway', sans-serif;
       }
 
+      /* Boks med billede og tekst */
       .popup-indhold {
-        display: flex;
-        align-items: flex-start;
-        gap: 3rem;
+        display: flex; /* Elementerne styres via flexbox */
+        align-items: flex-start; /* Sørger for billedet og teksten er justeret, så deres øverste kant ligger på samme niveau */
+        gap: 3rem; /* Luft mellem billede og tekst */
+        grid-column: 1 / span 2; /* Starter i kolonne 1 og strækker sig over 2 kolonner i bredden */
       }
 
+      /* Billede på popup i desktop */
       .popup-billede {
         width: 422px;
         height: 283px;
-        object-fit: cover;
+        object-fit: cover; /* Sørger for billedet ikke bliver strukket */
+        position: absolute; /* Gør at billedet kan flyttes frit  */
+        margin-top: -5.5rem; /* Trækker billedet opad */
       }
 
+      /* Tekst-boksen på dekstop  */
       .popup-tekst {
-        width: 50%;
+        display: grid;
+        grid-template-columns: 422px 1fr; /* Kolonne 1 er til billedet med en width på 422px, kolonne 2 tager resten af pladsen */
+        column-gap: 3rem; /* Luft mellem de to kolonner */
+        width: 100%;
       }
 
+      /* Popup */
       [popover] {
-        position: fixed;
-        inset: 0;
-        margin: auto;
+        position: fixed; /* Klistrer popup fast på skærmen, så den bliver stående når man scroller*/
+        inset: 0; /* Genvej der sætter top, bottom, left, right til 0px for at gør popup klar til centrering */
+        margin: auto; /* Centrerer popup fuldstændig midt på skærmen  */
         width: 850px;
         height: 500px;
-        border: none;
-        padding: 2rem;
-        box-sizing: border-box;
-        box-shadow: 0px 10px 40px rgba(0,0,0,0.15);
+        border: none; /* Fjerner rammen rundt om popup */
+        padding: 2rem; /* Giver luft ind i popup, så teksten ikke rører kanten*/
+        box-sizing: border-box; /* Sikrer popup størrelse, så padding ikke gør den større*/
+        box-shadow: 0px 10px 40px rgba(0,0,0,0.15); /* Blød skygge under popup*/
       }
 
+      /* Header 1 i desktop */
       [popover] h1 {
         font-size: 32px;
         font-weight:800;
         margin-bottom: 0.2rem;
+        margin-top: 0;
+        grid-column: 2; /* Tvinger header 1 over i kolonne 2 (højre side)*/
       }
 
+      /* Header 2 i desktop*/
       [popover] h2 {
         font-size: 32px;
         font-weight:normal;
         margin-bottom: 0.5rem;
+        margin-top: 0;
+        grid-column: 2; /* Tvinger header 2 over i kolonne 2 (højre side)*/
       }
 
       [popover] p {
+        display: block;
         font-size: 16px;
         font-weight:normal;
         line-height: 1.5;
+        margin-left: 470px; /* Rykker teksten til højre, så den ikke havner under billedet*/
+        width: auto;
       }
+
+
+      /* SLUT STYLE DESKTOP */
+
+
+      /* START STYLE SVG KORT */
 
       .st0 {
         fill: #60835d;
@@ -231,28 +245,34 @@
 
       .st1 {
         isolation: isolate;
-        opacity: .8;
+        opacity: .8; /* Gør elementet gennemsigtigt*/
       }
 
       .st1, .st2 {
-        fill: #fff;
-        stroke: #e21e27;
-        filter: drop-shadow(-10px 10px 20px rgba(0,0,0,0.4));
-        
+        fill: #fff; /* Gør kortet over Danmark hvidt indeni*/
+        stroke: #e21e27; /* Rød kant*/
       }
 
       .st3 {
-        fill: none;
+        fill: none; /* Gør at træet har ikke en farve indeni*/
         stroke: #f1f2f2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+        stroke-linecap: round; /* Gør enderne af en linje rundt*/
+        stroke-linejoin: round; /* Gør de hjørner, hvor to linjer mødes, runde*/
       }
 
 
+      /* SLUT STYLE SVG KORT */
+
+
+      /* START STYLE MOBILE */
+
        @media (max-width: 900px) {
 
+
+       /* Popop i mobile størrelse*/
        [popover] {
-        width: 363px ;
+        width: 90%; /* Fylder 90% af mobile skærmen*/
+        max-width: 363px ;
         height: 582px ;
       }
 
@@ -262,40 +282,61 @@
         cursor: pointer;
       }
 
+      /* Ændrer indhold til en column på mobile*/
       .popup-indhold {
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
-        align-items: center;
+        align-items: center; /* Centrerer indholdet i midten*/
+        width: 100%;
       }
 
+      /*Gør at billedet opfører sig pænt på mobile */
       .popup-billede {
-        width: 329px;
-        height: 220px;
+        position: static; /* Gør billedet normalt, så det ikke dækker over teksten*/
+        margin-top: 0; /* Fjerner minus margin fra desktop*/
+        width: 100%;
+        height: auto;
+        max-width: 329px;
       }   
 
+      /*Tekst tilpasede til mobile*/
       .popup-tekst {
         width: 100%;
         display: flex;
-        flex-direction: column;
+        flex-direction: column; /* Sætter header og tekst ind under hinanden*/
       }
 
 
+      /* Header 1 på mobile*/
       [popover] h1 {
       font-size: 30px;
+      grid-column: auto; /* Fjerner reglen fra desktop (kolonne 2 findes ikke på mobile)*/
+      margin: 0;
+      margin-bottom: 0.2rem;
       }
 
+      /* Header 2 på mobile*/
       [popover] h2 {
       font-size: 25px;
-        
+      grid-column: auto; /* Fjerner desktop reglen*/
+      margin: 0;
+      margin-bottom: 0.5rem;
       }
 
+      /* Tekst i mobile*/
       [popover] p {
       font-size: 16px;
+      margin-left:  0; /* Nulstiller de 470px margin fra desktop, så teksten ikke ryger ud af skærmen*/
+      width: 100%; 
       }
 
 
        }
+
+
+      /* SLUT STYLE MOBILE */
+
     </style>
   </defs>
   <g id="Layer_11" data-name="Layer_1">
