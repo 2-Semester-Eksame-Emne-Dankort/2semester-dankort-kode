@@ -239,9 +239,7 @@
         stroke-width: 7px;
         filter: drop-shadow(-2px 10px 5px rgba(0,0,0,0.4));
       }
-      .st0, .st1, .st2 {
-        stroke-miterlimit: 10;
-      }
+      
 
       .st1 {
         isolation: isolate;
@@ -483,7 +481,7 @@ svg.ikon-svg {
   //Loop through every circle
   circles.forEach(circle => {
 
-    circle.style.cursor = "pointer";
+   circle.style.cursor = "pointer";
 
     //4. Add click event
     circle.addEventListener("click", () => {
