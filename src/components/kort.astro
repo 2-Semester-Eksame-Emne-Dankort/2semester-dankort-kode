@@ -140,7 +140,7 @@
   <defs> 
     <style>
 
-      /* START STYLE DESKTOP */
+      /* START STYLE MOBILE */
 
 
       /* Tilbage-button i popupen */
@@ -150,32 +150,33 @@
         font-weight: 800; 
         border: none; /* Fjerner rammen rundt om knappen */
         cursor: pointer; /* Musen bliver til en hånd, når man holder det over knappen */
-        margin-bottom: 3.5rem; /* Laver Luft under knappen */
+        margin-bottom: 3rem; /* Laver Luft under knappen */
         font-family: 'Raleway', sans-serif;
       }
 
       /* Boks med billede og tekst */
       .popup-indhold {
         display: flex; /* Elementerne styres via flexbox */
-        align-items: flex-start; /* Sørger for billedet og teksten er justeret, så deres øverste kant ligger på samme niveau */
-        gap: 3rem; /* Luft mellem billede og tekst */
-        grid-column: 1 / span 2; /* Starter i kolonne 1 og strækker sig over 2 kolonner i bredden */
+        flex-direction: column;
+        gap: 1.5rem; /* Luft mellem billede og tekst */
+        align-items: center; /* Centrerer indholdet i midten */
+        width: 100%;
       }
 
       /* Billede på popup i desktop */
       .popup-billede {
-        width: 422px;
-        height: 283px;
+        width: 100%;
+        height: auto;
+        max-width: 329px;
         object-fit: cover; /* Sørger for billedet ikke bliver strukket */
-        position: absolute; /* Gør at billedet kan flyttes frit  */
-        margin-top: -5.5rem; /* Trækker billedet opad */
+        position: static; /* Gør billedet normalt, så det ikke dækker over teksten */
+        margin-top: 0; /* Fjerner minus margin fra desktop */
       }
 
       /* Tekst-boksen på dekstop  */
       .popup-tekst {
-        display: grid;
-        grid-template-columns: 422px 1fr; /* Kolonne 1 er til billedet med en width på 422px, kolonne 2 tager resten af pladsen */
-        column-gap: 3rem; /* Luft mellem de to kolonner */
+        display: flex;
+        flex-direction: column; /* Sætter header og tekst ind under hinanden */
         width: 100%;
       }
 
@@ -184,8 +185,9 @@
         position: fixed; /* Klistrer popup fast på skærmen, så den bliver stående når man scroller*/
         inset: 0; /* Genvej der sætter top, bottom, left, right til 0px for at gør popup klar til centrering */
         margin: auto; /* Centrerer popup fuldstændig midt på skærmen  */
-        width: 850px;
-        height: 500px;
+        width: 90%; /* Fylder 90% af mobile skærmen */
+        max-width: 363px;
+        height: 582px;
         border: none; /* Fjerner rammen rundt om popup */
         padding: 2rem; /* Giver luft ind i popup, så teksten ikke rører kanten*/
         box-sizing: border-box; /* Sikrer popup størrelse, så padding ikke gør den større*/
@@ -194,20 +196,20 @@
 
       /* Header 1 i desktop */
       [popover] h1 {
-        font-size: 32px;
+        font-size: 30px;
         font-weight:800;
+        margin: 0;
         margin-bottom: 0.2rem;
-        margin-top: 0;
-        grid-column: 2; /* Tvinger header 1 over i kolonne 2 (højre side)*/
+        grid-column: auto; /* Fjerner reglen fra desktop (kolonne 2 findes ikke på mobile)*/
       }
 
       /* Header 2 i desktop*/
       [popover] h2 {
-        font-size: 32px;
+        font-size: 25px;
         font-weight:normal;
+        margin: 0;
         margin-bottom: 0.5rem;
-        margin-top: 0;
-        grid-column: 2; /* Tvinger header 2 over i kolonne 2 (højre side)*/
+        grid-column: auto; /* Fjerner desktop reglen*/
       }
 
       [popover] p {
@@ -215,12 +217,12 @@
         font-size: 16px;
         font-weight:normal;
         line-height: 1.5;
-        margin-left: 470px; /* Rykker teksten til højre, så den ikke havner under billedet*/
-        width: auto;
+        margin-left: 0; /* Nulstiller de 470px margin fra desktop, så teksten ikke ryger ud af skærmen*/
+        width: 100%;
       }
 
 
-      /* SLUT STYLE DESKTOP */
+      /* SLUT STYLE MOBILE */
 
 
       /* START STYLE SVG KORT */
@@ -259,81 +261,73 @@
       }
 
 
+
       /* SLUT STYLE SVG KORT */
 
 
-      /* START STYLE MOBILE */
+      /* START STYLE DESKTOP */
 
-       @media (max-width: 900px) {
+       @media (min-width: 900px) {
 
-
-       /* Popop i mobile størrelse*/
-       [popover] {
-        width: 90%; /* Fylder 90% af mobile skærmen*/
-        max-width: 363px ;
-        height: 582px ;
-      }
 
       .tilbage-knap {
-        font-size: 20px;
-        margin-bottom: 3rem;
-        cursor: pointer;
+        margin-bottom: 3.5rem;
       }
 
-      /* Ændrer indhold til en column på mobile*/
+      /* Boks med billede og tekst */
       .popup-indhold {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: center; /* Centrerer indholdet i midten*/
-        width: 100%;
+        align-items: flex-start;
+        gap: 3rem;
+        grid-column: 1 / span 2;
       }
 
-      /*Gør at billedet opfører sig pænt på mobile */
+      /* Billede på popup i desktop */
       .popup-billede {
-        position: static; /* Gør billedet normalt, så det ikke dækker over teksten*/
-        margin-top: 0; /* Fjerner minus margin fra desktop*/
-        width: 100%;
-        height: auto;
-        max-width: 329px;
-      }   
+        width: 422px;
+        height: 283px;
+        max-width: none;
+        position: absolute;
+        margin-top: -5.5rem;
+      }
 
-      /*Tekst tilpasede til mobile*/
+      /* Tekst-boksen på dekstop */
       .popup-tekst {
-        width: 100%;
-        display: flex;
-        flex-direction: column; /* Sætter header og tekst ind under hinanden*/
+        display: grid;
+        grid-template-columns: 422px 1fr;
+        column-gap: 3rem;
       }
 
+      /* Popup */
+      [popover] {
+        width: 850px;
+        max-width: none;
+        height: 500px;
+      }
 
-      /* Header 1 på mobile*/
+      /* Header 1 i desktop */
       [popover] h1 {
-      font-size: 30px;
-      grid-column: auto; /* Fjerner reglen fra desktop (kolonne 2 findes ikke på mobile)*/
-      margin: 0;
-      margin-bottom: 0.2rem;
+        font-size: 32px;
+        margin-top: 0;
+        grid-column: 2;
       }
 
-      /* Header 2 på mobile*/
+      /* Header 2 i desktop */
       [popover] h2 {
-      font-size: 25px;
-      grid-column: auto; /* Fjerner desktop reglen*/
-      margin: 0;
-      margin-bottom: 0.5rem;
+        font-size: 32px;
+        margin-top: 0;
+        grid-column: 2;
       }
 
-      /* Tekst i mobile*/
       [popover] p {
-      font-size: 16px;
-      margin-left:  0; /* Nulstiller de 470px margin fra desktop, så teksten ikke ryger ud af skærmen*/
-      width: 100%; 
+        margin-left: 470px;
+        width: auto;
       }
 
 
        }
 
 
-      /* SLUT STYLE MOBILE */
+      /* SLUT STYLE DESKTOP */
 
     </style>
   </defs>
@@ -404,7 +398,7 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
+  display: none;
   align-items: center;
   gap: 1rem;
   background: #d9d9d9;
@@ -445,6 +439,7 @@ svg.ikon-svg {
 #top-text h1 {
   font-size: 2.5rem;
   font-weight: 800;
+  margin-top: 5rem;
 
   margin-bottom: 0.5rem;
 
@@ -461,12 +456,10 @@ svg.ikon-svg {
   font-size: 1.25rem;
 }
 
-@media (max-width: 768px) {
-
+@media (min-width: 900px) {
   #tavle {
-    display: none;
+    display: flex;
   }
-
 }
 </style>
 
