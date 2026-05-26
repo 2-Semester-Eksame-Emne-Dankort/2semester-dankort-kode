@@ -1,198 +1,222 @@
-Teknisk dokumentation – [Dankort-Case]
+# Dankort Case - Teknisk Dokumentation
 
-Om projektet
-Dette projekt er lavet som en del af Tema 10-eksamensprojekt. Vi har lavet et dynamisk website med HTML, CSS og JavaScript bygget i Astro, hvor dele af indholdet bliver hentet fra et Api, lavet i Supabase
+## Projektoversigt
 
-Sitet består af følgende sider:
+Dette projekt er udviklet som et Astro-baseret redesign af Dankorts website med fokus pa:
 
-Index.Astro-Landing page
-Oremærket.Astro-Øremerket siden
+1. at kommunikere Dankorts kernefordele
+2. at synliggore Dankort Oremærket
+3. at kombinere statisk content med dynamisk data fra Supabase
 
-Links
-GitHub repository: [https://github.com/2-Semester-Eksame-Emne-Dankort/2semester-dankort-kode]
-Netlify link:
-Figma: [https://www.figma.com/design/jyZBgOI53NKgKMPSnKURaQ/2.semester-eksamen?node-id=619-132&t=tmBH2ptchkzgRCPv-1]
-Trello: [https://trello.com/b/rUBROqAC/2sem-eksamen]
+Løsningen er bygget komponentbaseret i Astro med HTML, CSS og vanilla JavaScript.
 
-Projektstruktur
-Projektet er opdelt i HTML, CSS og JavaScript-filer.
+### Primare funktioner
 
-Astro-kode/
-├── Pages/
-├── index.astro
-├── oremerket.astro
-├── Components/
-│ ├── apple-pay.astro
-│ ├── button.astro
-│ ├── counter.astro
-│ ├── footer.astro
-│ ├── frodel.astro
-│ ├── header.astro
-│ └──hero-forside.astro
-│ ├── hero-oremerket.astro
-│ ├── kort.astro
-│ ├── om-oremerket.astro
-│ ├── quotes.astro
-│ ├── sparer.astro
-└──trin.astro
-├── layouts/
-│ ├── layout.astro
+1. Genbrugelige UI-komponenter (header, footer, hero, knap, kort, counter)
+2. Dynamisk datahentning via Supabase REST API (årsdata til donation/counter)
+3. Interaktive features (burger-menu, kort-popups, auto-slider, års-faner)
+4. Responsivt layout til mobil og desktop
+
+### Sider
+
+1. `src/pages/index.astro` - landing page
+2. `src/pages/oremerket.astro` - Oremærket-side med naturkort og counter
+
+### Links
+
+1. GitHub repository: [https://github.com/2-Semester-Eksame-Emne-Dankort/2semester-dankort-kode]
+2. Netlify: indsattes af teamet []
+3. Figma: [https://www.figma.com/design/jyZBgOI53NKgKMPSnKURaQ/2.semester-eksamen?node-id=619-132&t=tmBH2ptchkzgRCPv-1]
+4. Trello: [https://trello.com/b/rUBROqAC/2sem-eksamen]
+
+## Projektstruktur
+
+```text
+.
+├── astro.config.mjs
+├── package.json
+├── tsconfig.json
+├── public/
+│   └── Img/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── apple-pay.astro
+│   │   ├── button.astro
+│   │   ├── counter.astro
+│   │   ├── footer.astro
+│   │   ├── fordel.astro
+│   │   ├── header.astro
+│   │   ├── hero-forside.astro
+│   │   ├── hero-oremerket.astro
+│   │   ├── kort.astro
+│   │   ├── om-oremerket.astro
+│   │   ├── quotes.astro
+│   │   ├── sparer.astro
+│   │   └── trin.astro
+│   ├── layouts/
+│   │   └── Layout.astro
+│   ├── pages/
+│   │   ├── index.astro
+│   │   └── oremerket.astro
+│   └── styles/
+│       └── main.css
 └── README.md
+```
 
-Filbeskrivelser
+## Filbeskrivelser
 
-Pages – bruges til at bygge de enkelte sider op
+### Layout
 
-Components- Bruges til at bygge elementer som så kan placeres i layout eller pages
+`src/layouts/Layout.astro` er den globale wrapper for alle sider:
 
-Layout- Bruges til at fast placeres de elementer som skal bruges globalt, så de bare kan importes i pages.
+1. importerer global styling fra `src/styles/main.css`
+2. renderer `Header`
+3. renderer sideindhold via `<slot />`
+4. renderer `Footer`
 
-Navngivning
+Det betyder, at alle pages far ens global struktur og navigation.
 
-Vi har navngivet vores filer, variabler og funktioner, så de er så selvforklarende som muligt. Dette gør det lettere for alle i gruppen at læse og forstå koden.
+### Pages
 
-Eksempler på variabler
+1. `src/pages/index.astro` sammensætter forsiden af hero + indholdssektioner
+2. `src/pages/oremerket.astro` sammensætter Oremærket-hero, introtekst, trin forklaring, interaktivt kort og dynamisk counter
 
-Eksempler på variabler
-const popId;
-const circles;
+### Components
 
-Eksempler på funktioner
-AddEventListener;
+Komponenterne er opdelt efter sektioner og funktionalitet. Nogle er primart statiske content-sektioner, mens andre indeholder JavaScript.
 
-Vi har brugt camelCase i JavaScript, fordi det gør koden mere ensartet og lettere at læse.
+## Dataflow
 
-Kommentarer i koden
-Vi har kommenteret de steder i koden, hvor det giver mening. Fx ved funktioner, fetch-kald og steder hvor der sker DOM-manipulation.
+Projektet har to typer dataflow:
 
-Eksempel:
+### 1) Statisk dataflow
 
-// --- 1. FIND BEHOLDERE ---
-const container = document.querySelector(".cards");
-const priceSort = document.querySelector("#price-sort"); // Finder dropdown
-const filterButtons = document.querySelectorAll(".filter-btn"); // Finder knapper
-Data og JSON-struktur
-Vi henter data fra et API i JSON-format.
+1. Sider importerer Astro-komponenter
+2. Komponenter renderer hardcoded tekst, billeder og markup
+3. Styles ligger lokalt i hver komponent + globalt i `main.css`
 
-Et objekt kan fx se sådan ud:
+### 2) Dynamisk dataflow (counter)
 
-{
-{
-"id": 16,
-"title": "Apple",
-"description": "Fresh and crisp apples, perfect for snacking or incorporating into various recipes.",
-"category": "groceries",
-"price": 1.99,
-"discountPercentage": 12.62,
-"rating": 4.19,
-"stock": 8,
-"tags": [
-"fruits"
-],
-"sku": "GRO-BRD-APP-016",
-"weight": 9,
-"dimensions": {
-"width": 13.66,
-"height": 11.01,
-"depth": 9.73
-},
-"warrantyInformation": "3 year warranty",
-"shippingInformation": "Ships in 2 weeks",
-"availabilityStatus": "In Stock",
-"reviews": [
-{
-"rating": 5,
-"comment": "Very satisfied!",
-"date": "2025-04-30T09:41:02.053Z",
-"reviewerName": "Sophia Brown",
-"reviewerEmail": "sophia.brown@x.dummyjson.com"
-},
-{
-"rating": 1,
-"comment": "Very dissatisfied!",
-"date": "2025-04-30T09:41:02.053Z",
-"reviewerName": "Scarlett Bowman",
-"reviewerEmail": "scarlett.bowman@x.dummyjson.com"
-},
-{
-"rating": 3,
-"comment": "Very unhappy with my purchase!",
-"date": "2025-04-30T09:41:02.053Z",
-"reviewerName": "William Gonzalez",
-"reviewerEmail": "william.gonzalez@x.dummyjson.com"
-}
-],
-"returnPolicy": "90 days return policy",
-"minimumOrderQuantity": 7,
-"meta": {
-"createdAt": "2025-04-30T09:41:02.053Z",
-"updatedAt": "2025-04-30T09:41:02.053Z",
-"barcode": "7962803553314",
-"qrCode": "https://cdn.dummyjson.com/public/qr-code.png"
-},
-"images": [
-"https://cdn.dummyjson.com/product-images/groceries/apple/1.webp"
-],
-"thumbnail": "https://cdn.dummyjson.com/product-images/groceries/apple/thumbnail.webp"
-},
-}
-Felter vi bruger
-id – bruges til at sende brugeren videre til detaljesiden
-title – Produktnavn
-tags – Sætter en kategori ind (feks meat eller fruit)
-description – En beskrivelse af produktet
-price – Produktets pris
-Formular og validering
-Vi har lavet en formular, hvor brugeren kan indtaste oplysninger.
+1. `src/components/counter.astro` kalder Supabase REST endpoint via `fetch(...)`
+2. data sorteres pa `year.asc`
+3. tredje element (`years[2]`) bruges som initial aktiv visning (2026)
+4. ved klik opdateres årstallet, donation, areal, CO2, arter og progress-bar i DOM
 
-HTML-validering:
+## Sidebeskrivelser
 
-required – feltet skal udfyldes
-type="email" – validerer email-format
-Det sikrer, at brugeren ikke kan sende formularen, hvis felterne ikke er udfyldt korrekt.
+### `index.astro`
 
-Git og branches
-Vi har brugt GitHub til at samarbejde om projektet.
+Importerede sektioner:
 
-Vi har arbejdet med branches, så vi ikke sad og ændrede i det samme på samme tid.
+1. `Hero`
+2. `Fordel`
+3. `ApplePay`
+4. `OmOremerket`
+5. `Sparer`
+6. `Quotes`
 
-Vi navngav branchene med feature.
+### `oremerket.astro`
 
-Eksempler på branches
-prodcutlister-og-js
-JS
-Workflow
-Lave en branch med feature-navn
-Kode en feature
-Committe ændringer
-Pushe til GitHub
-Merge til main når det virkede
-Det gjorde det nemmere at holde styr på, hvem der lavede hvad.
+Importerede sektioner:
 
-Bæredygtighed
-Vi har tænkt bæredygtighed ind i projektet.
+1. `HeroOremerket`
+2. lokal introsektion (inline styles)
+3. `Kort` forklaring af Øremærket
+4. `Kort` (SVG-kort + popups)
+5. `Counter` (Supabase-data)
 
-Tiltag:
+## Komponentoversigt
 
-Ingen videoer
-Ingen tunge frameworks
-Genbruge af kode
-Udfordringer undervejs
-En af vores udfordringer var at få data fra Rest API’et vist korrekt på siderne.
+1. `header.astro`: sticky header, burger-menu, mobil/desktop nav, klik-udenfor-luk
+2. `footer.astro`: footerlinks + language-button + brandkort
+3. `hero-forside.astro`: landing hero med CTA-knap
+4. `hero-oremerket.astro`: hero-banner for Oremærket-siden
+5. `button.astro`: genbrugelig CTA-link-knap
+6. `fordel.astro`: 4 fordelskort med ikoner
+7. `apple-pay.astro`: guide-sektion med trin og visuals
+8. `om-oremerket.astro`: teaser-sektion med link til Oremærket-siden
+9. `sparer.astro`: lokalsamfund/besparelses-sektion
+10. `quotes.astro`: horizontal slider med auto-scroll
+11. `kort.astro`: SVG-Danmarkskort med klikbare punkter og popover-modaler
+12. `counter.astro`: årsbaseret donationskort med data fra Supabase
+13. `trin.astro`: trin-for-trin komponent
 
-Løsninger:
+## Stylingstrategi
 
-Console.logge data undervejs
-Bruge URLSearchParams
-Dele opgaverne mere tydeligt i gruppen
-Mulige forbedringer
-Hvis vi skulle arbejde videre med projektet, kunne vi forbedre det ved at tilføje:
+1. Global reset + design tokens i `src/styles/main.css`
+2. CSS custom properties bruges til farver og typography
+3. Hver komponent har eget scoped `<style>` for lokal layoutkontrol
+4. Billeder/ikoner leveres primart fra `public/Img`
+5. Font hentes via Google Fonts (Raleway)
 
-Søgefunktion
-Add to basket knap der virker
-Udvide konceptet med mere data
-Gruppemedlemmer
-Frederik Højvar Bust Hansen
-Gregor Pavlik
-Isabel Miabom
-William Tien Nguyen
+## Responsivt design
+
+Projektet bruger overvejende et breakpoint omkring `900px`:
+
+1. under 900px: mobil layouts (column flow, burger-nav, mindre typografi)
+2. over 900px: desktop layouts (grid/rad-opdelinger, synlig desktop-nav)
+
+Responsiv adfærd findes i alle sektioner via lokale media queries.
+
+## Scriptoversigt
+
+### `header.astro`
+
+1. toggler burger-menu
+2. lukker menu via close-knap
+3. lukker menu ved klik udenfor nav
+
+### `quotes.astro`
+
+1. auto-scroll af quote-slider hvert 3. sekund
+2. resetter scroll tilbage til start ved slutning
+
+### `kort.astro`
+
+1. finder alle `.map-point` i SVG
+2. binder klik-events
+3. matcher punkt-id med popup-id (`popup-<id>`)
+4. åbner modal via `showPopover()`
+
+### `counter.astro`
+
+1. fetcher årsdata fra Supabase
+2. binder klik pa års-faner
+3. opdaterer relevante DOM-felter dynamisk
+4. opdaterer progress-bar bredde baseret pa valgt år
+
+## API og integration
+
+### Supabase endpoint
+
+`https://ixghczwghjowmllzbjuk.supabase.co/rest/v1/oermaerketsiden-taeller?select=*&order=year.asc`
+
+### Forventede felter
+
+1. `year`
+2. `donation_amount`
+3. `progress_percent`
+4. `area_number`
+5. `co2_amount`
+6. `animal_species`
+
+## Kørsel og build
+
+### Kommandoer
+
+1. `npm install`
+2. `npm run dev`
+3. `npm run build`
+
+## Kendte tekniske forhold
+
+1. enkelte asset paths bruger både `Img/...` og `/public/Img/...`-mønster; de bor standardiseres
+2. `header` linker til `/erhverv` og `/privat`, som ikke findes i nuværende pages
+3. `quotes` bruger `setInterval` uden lifecycle cleanup (relevant ved mere avanceret navigation/runtime)
+4. `trin.astro` ligger i kodebasen men er ikke inkluderet i sideflow
+
+## Forslag til videreudvikling
+
+1. Implementer billeder gennem assets
+2. Få CTA-knappen i hero-sektionen på forsiden samt navigationslinket til at føre videre til de faktiske sider.
