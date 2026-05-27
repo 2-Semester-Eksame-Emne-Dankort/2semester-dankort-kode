@@ -219,4 +219,4 @@ Responsiv adfærd findes i alle sektioner via lokale media queries.
 ## Forslag til videreudvikling
 
 1. Implementer billeder gennem assets
-2. Få CTA-knappen i hero-sektionen på forsiden samt navigationslinket til at føre videre til de faktiske sider.
+2. Få CTA-knappen i hero-sektionen på forsiden samt navigations linket til at føre videre til de faktiske sider.
