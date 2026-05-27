@@ -250,13 +250,13 @@
 
       .st1, .st2 {
         fill: #fff; /* Gør kortet over Danmark hvidt indeni*/
-        stroke: #e21e27; /* Rød kant*/
+        stroke: var(--the-red); /* Rød kant*/
         filter: drop-shadow(-2px 10px 7px rgba(0,0,0,0.4));
       }
 
       .st3 {
         fill: none; /* Gør at træet har ikke en farve indeni*/
-        stroke: #f1f2f2;
+        stroke: white;
         stroke-linecap: round; /* Gør enderne af en linje rundt*/
         stroke-linejoin: round; /* Gør de hjørner, hvor to linjer mødes, runde*/
       }
@@ -389,7 +389,7 @@
 
   margin: 0 auto;
 
-  background-color: #EBEBEB;
+  background-color: var(--the-lightgrey);
   border-radius: 40px;
   box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.5);
   overflow: hidden;
@@ -403,7 +403,7 @@
   display: none;
   align-items: center;
   gap: 1rem;
-  background: #d9d9d9;
+  background: var(--the-grey);
   padding: 1rem 2rem;
   border-radius: 40px;
   box-shadow: 0 4px 1px rgba(0,0,0,0.1);
@@ -427,7 +427,7 @@
 
 svg.ikon-svg {
   height: 26px;
-  fill: #fff;
+  fill: white;
   transform: scale(1.5);
 }
 

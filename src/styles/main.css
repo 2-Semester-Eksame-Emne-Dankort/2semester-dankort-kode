@@ -18,8 +18,10 @@ img {
   /* colors */
   --the-background: #ffffff; /* background */
   --the-red: #e21e27;
-  --the-blue: #1f2f3e;
+  --the-blue: #17283b;
+  --the-lightblue: #40dde8;
   --the-grey: #c3c3c3;
+  --the-lightgrey: #ebebeb;
   --the-black: #1e1e1e;
 
   /* font */

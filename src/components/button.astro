@@ -13,12 +13,12 @@ const { text, link } = Astro.props;
     width: auto;
     max-width: max-content;
     font-family: 'Railway', sans-serif;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 500;
     text-decoration: none;
     color: white;
-    background-color: #E21E27;
-    padding: 14px 45px;
+    background-color: var(--the-red);
+    padding: 10px 32px;
     border-radius: 50px;
     transition: all 0.3s ease;
     cursor: pointer;
@@ -27,14 +27,14 @@ const { text, link } = Astro.props;
 
   .btn-outline:hover {
     background-color: #BB1018;
-    color: #ffffff;
+    color: white;
     transform: translateY(-2px);
   }
 
-  @media (max-width: 600px) {
+  @media (min-width: 900px) {
     .btn-outline {
-      padding: 10px 32px;
-      font-size: 0.9rem;
+      padding: 14px 45px;
+      font-size: 1rem;
     }
   }
 </style>
