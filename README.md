@@ -31,7 +31,7 @@ Løsningen er bygget komponentbaseret i Astro med HTML, CSS og vanilla JavaScrip
 
 ## Projektstruktur
 
-```text
+```2SEMESTER-DANKORT-KODE
 .
 ├── astro.config.mjs
 ├── package.json
@@ -95,6 +95,7 @@ Projektet har to typer dataflow:
 1. Sider importerer Astro-komponenter
 2. Komponenter renderer hardcoded tekst, billeder og markup
 3. Styles ligger lokalt i hver komponent + globalt i `main.css`
+4. Raleway font bliver importeret globalt i `main.css`
 
 ### 2) Dynamisk dataflow (counter)
 
