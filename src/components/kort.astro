@@ -249,6 +249,7 @@
       .st1, .st2 {
         fill: #fff; /* Gør kortet over Danmark hvidt indeni*/
         stroke: #e21e27; /* Rød kant*/
+        filter: drop-shadow(-2px 10px 7px rgba(0,0,0,0.4));
       }
 
       .st3 {
@@ -369,6 +370,7 @@
     <path class="st3" d="M381.33,199.77l-12.93,16.73h7.61l-10.65,12.17h12.17v9.13h7.61v-9.13h12.17l-10.65-12.17h7.61l-12.93-16.73h-.01Z"/>
   </g>
 </svg>  
+
 <div id="tavle">
   <div class="ikon">
      <svg viewBox="0 0 50 50" class="ikon-svg">
@@ -381,7 +383,7 @@
   </svg>
 
   </div>
-<h2>hver markør er et område - klik for at udforske</h2>
+<h2>Hver markør er et område - klik for at udforske</h2>
 </div>
 </div>
 
@@ -438,8 +440,7 @@ svg.ikon-svg {
 #top-text {
   width: 90%;
   max-width: 1200px;
-
-  margin: 0 auto 2rem auto;
+  margin: 5rem auto 5rem auto;
 }
 
 #top-text h1 {
