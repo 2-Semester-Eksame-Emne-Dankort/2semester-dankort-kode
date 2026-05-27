@@ -25,7 +25,7 @@ Løsningen er bygget komponentbaseret i Astro med HTML, CSS og vanilla JavaScrip
 ### Links
 
 1. GitHub repository: [https://github.com/2-Semester-Eksame-Emne-Dankort/2semester-dankort-kode]
-2. Netlify: indsattes af teamet []
+2. Netlify: [dankort-2semester-eksamen.netlify.app]
 3. Figma: [https://www.figma.com/design/jyZBgOI53NKgKMPSnKURaQ/2.semester-eksamen?node-id=619-132&t=tmBH2ptchkzgRCPv-1]
 4. Trello: [https://trello.com/b/rUBROqAC/2sem-eksamen]
 
