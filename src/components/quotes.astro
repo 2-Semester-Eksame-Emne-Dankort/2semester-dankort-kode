@@ -164,14 +164,18 @@
 
 </style>
 
-<script is:inline>
+<script>
 
+//Finder slider-elementet
   const slider = document.querySelector('.quotes-slider');
 
+  // Tjekker om slideren findes
   if (slider) {
 
+    //Kør noget igen og igen efter et bestemt tidsinterval (3000ms = 3sek)
     setInterval(() => {
 
+      //Scroller slideren mod højre.
       slider.scrollBy({
         left: 392,
         behavior: 'smooth'
