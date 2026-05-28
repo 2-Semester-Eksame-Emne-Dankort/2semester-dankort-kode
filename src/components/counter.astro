@@ -13,7 +13,7 @@ const activeYear = years[2];
 
 <div class="counter-card">
   <div class="year-tabs"> 
-    {years.map((yearData: any) => ( //Loop through the years data and create a button for each year, with the year value as the text and a data attribute for the year.
+    {years.map((yearData: any) => ( //Loop through the years data and create a button for each year, For each year object, the code generates a button dynamically.
       <button
         class={`year-tab ${yearData.year === activeYear.year ? "active" : ""}`} //If this button’s year is the same as the active year, add the class active. Otherwise add nothing.
         data-year={yearData.year} //Add a data attribute to the button with the year value, so we can access it in the click event listener.
@@ -64,8 +64,8 @@ const activeYear = years[2];
   </div>
 </div>
 
-<script define:vars={{ years }}> //Make the years data available in the script, so we can use it to update the content when a year tab is clicked.
-  
+<script define:vars={{ years }}> //This is Astro-specific syntax and makes the years data available in the script, so we can use it to update the content when a year tab is clicked.
+  //Without this, the browser script would not know what years is.
   const tabs = document.querySelectorAll(".year-tab"); //Select all the year tab buttons, so we can add click event listeners to them.
 
   tabs.forEach((tab) => {
